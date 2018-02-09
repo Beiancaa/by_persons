@@ -1,0 +1,52 @@
+%h2
+  %center List Of Profiles
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        %center Person Id
+      %th
+        %center Person Status
+      %th 
+        %center First Name
+      %th
+        %center Last Name
+      %th 
+        %center Age
+      %th 
+        %center Gender
+      %th 
+        %center Show profile
+      %th 
+        %center Edit profile
+      %th 
+        %center Remove profile 
+      
+  %tbody
+    - @profiles.each do |profile|
+      %tr
+        %td
+          %center= profile.person.id
+        %td
+          - if profile.person.active
+            %center
+              %input{checked: 'checked',class: 'person_check', id: profile.person.id, data: { toggle: 'toggle', off: 'inactive', on: 'active'}, type: 'checkbox'}
+          - else
+            %input{data: { toggle: 'toggle', off: 'inactive', on: 'active'},class: 'person_check', id: "#{profile.person.id}", onclick: "change_status(#profile.person.id)", type: 'checkbox'}  
+        %td
+          %center= profile.first_name
+        %td
+          %center= profile.last_name
+        %td
+          %center= profile.age
+        %td
+          %center= profile.gender
+        %td
+          %center= link_to 'Show', profile, class: "btn btn-default"
+        %td
+          %center= link_to 'Edit', edit_profile_path(profile), class: "btn btn-default"
+        %td
+          %center= link_to 'Destroy', profile, method: :delete, class: "btn btn-default", data: { confirm: 'Are you sure?' }
+
+%br

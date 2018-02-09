@@ -1,0 +1,40 @@
+%h2
+  %center List Of Addresses
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        %center Person Id
+      %th 
+        %center City
+      %th
+        %center Street
+      %th 
+        %center Zip Code
+      %th 
+        %center Show address
+      %th 
+        %center Edit address
+      %th 
+        %center Remove address    
+      
+  %tbody
+    - @addresses.each do |address|
+      %tr
+        %td
+          %center= link_to address.person.id
+        %td
+          %center= link_to address.city
+        %td
+          %center= link_to address.street
+        %td
+          %center= link_to address.zip_code
+        %td
+          %center= link_to 'Show', address, class: "btn btn-default"
+        %td
+          %center= link_to 'Edit', edit_address_path(address), class: "btn btn-default"
+        %td
+          %center= link_to 'Destroy', address, method: :delete, class: "btn btn-default", data: { confirm: 'Are you sure?' }
+
+%br

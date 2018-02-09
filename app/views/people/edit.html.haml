@@ -1,0 +1,9 @@
+%h1
+  %center Editing Person
+= render 'form'
+%center
+  = link_to 'Show', @person, class: "btn btn-info"
+  |
+  = link_to 'Back', people_path, class: "btn btn-info"
+  |
+  = link_to 'Destroy', @person, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info"

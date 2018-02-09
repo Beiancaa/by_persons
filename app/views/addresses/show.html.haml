@@ -1,0 +1,36 @@
+%p#notice= notice
+%h2
+  %center Person's Addrees
+%br/
+%table.table.table-striped
+  %thead
+    %tr.active
+      %th
+        %center Person ID
+      %th
+        %center City
+      %th
+        %center Street
+      %th
+        %center Zip Code
+      %th 
+        %center   
+  %tbody
+    %tr
+      %td
+        %center= @address.person.id
+      %td
+        %center= @address.city
+      %td
+        %center= @address.street
+      %td
+        %center= @address.zip_code
+      %td
+%center
+  = link_to 'Edit', edit_address_path(@address) ,class: "btn btn-info"
+  |
+  = link_to 'Back', addresses_path, class: "btn btn-info"
+  |
+  = link_to 'Delete', @address, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info"
+  |
+  = link_to 'Create New address', new_address_path, class: "btn btn-info"

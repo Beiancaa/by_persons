@@ -1,0 +1,35 @@
+%p#notice= notice
+%h2
+  %center Person
+%br/
+%table.table.table-striped
+  %thead
+    %tr.active
+      %th
+        %center User ID
+      %th
+        %center Name
+      %th
+        %center Birth Day
+      %th
+        %center Phone No.
+  %tbody
+    %tr
+      %td
+        %center= @person.user.id
+      %td
+        %center= @person.name
+      %td
+        %center= @person.birth_day
+      %td
+        %center= @person.phone_number
+      %td
+%center
+
+  = link_to 'Edit', edit_person_path(@person) ,class: "btn btn-info"
+  |
+  = link_to 'Back', people_path, class: "btn btn-info"
+  |
+  = link_to 'Delete', @person, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info"
+  |
+  = link_to 'Create New address', new_person_path, class: "btn btn-info"

@@ -1,0 +1,15 @@
+.panel.panel-default
+  .panel-heading
+    %h1
+      %center List Of People
+    .panel-body  
+      %table.table.table-striped#people{ data: { source: people_path(format: 'json')}}  
+        %thead
+          %tr
+            %th ID
+            %th Name
+            %th Birth day
+            %th Phone number
+            %th Show person
+            %th{:colspan => "3"}
+        %tbody

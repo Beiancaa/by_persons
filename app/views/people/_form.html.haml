@@ -1,0 +1,30 @@
+%center
+  = form_with(model: person, local: true) do |f|
+    - if person.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(person.errors.count, "error")
+          prohibited this person from being saved:
+        %ul
+          - person.errors.full_messages.each do |message|
+            %li= message
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} User
+    .col-sm-10
+      = f.collection_select :user_id, User.order(:id),:id,:id, include_blank: true        
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} Name
+    .col-sm-10
+      %input#lgFormGroupInput.form-control.form-control-lg{:placeholder => "Your name", :type => "name"}/
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} Birth Day
+    .col-sm-10
+      %input#exampleInputDOB1.form-control{:placeholder => "Date of Birth", :type => "date"}/
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} Phone No.
+    .col-sm-10
+      %input#lgFormGroupInput.form-control.form-control-lg{:placeholder => "Your phone", :type => "phone_number"}/
+    .form-group.row
+    .actions
+      %br/  
+      = f.submit

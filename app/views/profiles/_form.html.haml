@@ -1,0 +1,35 @@
+%center
+  = form_for(@profile) do |f|
+    - if @profile.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@profile.errors.count, "error")
+          prohibited this profile from being saved:
+        %ul
+          - @profile.errors.full_messages.each do |message|
+            %li= message
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} Person
+    .col-sm-10
+      = f.collection_select :person_id, Person.order(:name), :id, :name, prompt: true
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} First Name
+    .col-sm-10
+      %input#lgFormGroupInput.form-control.form-control-lg{:placeholder => "Your first name", :type => "first_name"}/
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} Last Name
+    .col-sm-10
+      %input#lgFormGroupInput.form-control.form-control-lg{:placeholder => "Your last name", :type => "last_name"}/
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} Age
+    .col-sm-10
+      %input#lgFormGroupInput.form-control.form-control-lg{:placeholder => "Your age", :type => "age"}/
+    .form-group.row
+    %label#myModal.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} Gender
+    .col-sm-10
+      %select#e1{:name => "gender"}
+        %option{:value => "Ma"} Male
+        %option{:value => "Fe"} Female
+    .actions
+      %br/  
+      = f.submit

@@ -1,0 +1,9 @@
+%h1
+  %center Editing Profile
+= render 'form'
+%center
+  = link_to 'Show', @profile, class: "btn btn-info"
+  |
+  = link_to 'Back', profiles_path, class: "btn btn-info"
+  |
+  = link_to 'Destroy', @profile, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info"

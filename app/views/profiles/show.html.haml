@@ -1,0 +1,37 @@
+%p#notice= notice
+%h2
+  %center Person's Profile
+%br/
+%table.table.table-striped
+  %thead
+    %tr.active
+      %th
+        %center Person Name
+      %th
+        %center First Name
+      %th
+        %center Last Name  
+      %th
+        %center Age
+      %th
+        %center Gender
+  %tbody
+    %tr
+      %td
+        %center= @profile.person.name
+      %td
+        %center= @profile.first_name
+      %td
+        %center= @profile.last_name
+      %td
+        %center= @profile.age
+      %td
+        %center= @profile.gender
+%center
+  = link_to 'Edit', edit_profile_path(@profile) ,class: "btn btn-info"
+  |
+  = link_to 'Back', profiles_path, class: "btn btn-info"
+  |
+  = link_to 'Delete', @profile, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info"
+  |
+  = link_to 'Create New Profile', new_profile_path, class: "btn btn-info"

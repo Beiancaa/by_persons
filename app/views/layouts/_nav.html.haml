@@ -1,0 +1,34 @@
+%nav#head-navbar.navbar.navbar-expand-sm.fixed-top
+  .container
+    %ul.nav.navbar-nav.pull-left 
+      - if user_signed_in?
+        %li.nav-item
+          %a.nav-link
+            = current_user.email
+        %li.nav-item 
+          %a.nav-link{:href => "#{destroy_user_session_path}", :method => 'delete'} Log Out
+                  
+      - else            
+        %ul.navbar-nav
+          %li.nav-item
+            %a.nav-link{:href => "#{new_user_registration_path}"} Sign Up
+          %li.nav-item
+            %a.nav-link{:href => "#{new_user_session_path}"} Log In
+   
+    / Links
+    %ul.nav.navbar-nav.pull-right
+      %li.nav-item
+        %a.nav-link{:href => "#{people_path}"} People
+      / Dropdown  
+      %li.nav-item.dropdown
+        %a#navbardrop.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
+          Addresses
+        .dropdown-menu
+          %a.dropdown-item{:href => "#{addresses_path}"} addresses
+          %a.dropdown-item{:href => "#{new_address_path}"} new address
+      %li.nav-item.dropdown
+        %a#navbardrop.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
+          Profiles
+        .dropdown-menu
+          %a.dropdown-item{:href => "#{profiles_path}"} all profiles
+          %a.dropdown-item{:href => "#{new_profile_path}"} new profile

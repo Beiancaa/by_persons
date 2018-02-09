@@ -1,0 +1,28 @@
+%center
+  = form_for @address do |f|
+    - if @address.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@address.errors.count, "error")} prohibited this address from being saved:"
+        %ul
+          - @address.errors.full_messages.each do |message|
+            %li= message           
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} Person
+    .col-sm-10
+      = f.collection_select :person_id, Person.order(:id),:id,:id, include_blank: true
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} City
+    .col-sm-10
+      %input#lgFormGroupInput.form-control.form-control-lg{:placeholder => "Your city", :type => "city"}/
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} Street
+    .col-sm-10
+      %input#lgFormGroupInput.form-control.form-control-lg{:placeholder => "Street", :type => "street"}/
+    .form-group.row
+    %label.col-sm-2.col-form-label.col-form-label-lg{:for => "lgFormGroupInput"} Zip code
+    .col-sm-10
+      %input#lgFormGroupInput.form-control.form-control-lg{:placeholder => "Zip code", :type => "zip_code"}/
+    .actions
+      %br/  
+      = f.submit
+  

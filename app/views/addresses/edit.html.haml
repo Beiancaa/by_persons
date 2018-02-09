@@ -1,0 +1,9 @@
+%h1
+  %center Editing Address
+= render 'form'
+%center
+  = link_to 'Show', @address, class: "btn btn-info"
+  |
+  = link_to 'Back', addresses_path, class: "btn btn-info"
+  |
+  = link_to 'Destroy', @address, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info"
